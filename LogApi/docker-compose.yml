@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  logapi:
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: logapi-app
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__Redis=redis:6379
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+    driver: local
+
+networks:
+  default:
+    name: logapi-network
+    driver: bridge
