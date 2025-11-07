@@ -13,32 +13,23 @@ public class LogController : ControllerBase
     private readonly IHttpClientHelper _httpClientHelper;
     private List<string> ipAddresses = new List<string>();
     private readonly IRegistrationService _registrationService;
+    private readonly ILogNotificationService _logNotificationService;
 
-    public LogController(ILogger<LogController> logger, IHttpClientHelper httpClientHelper, IRegistrationService registrationService)
+    public LogController(ILogger<LogController> logger, IHttpClientHelper httpClientHelper, IRegistrationService registrationService, ILogNotificationService logNotificationService)
     {
         _logger = logger;
         _httpClientHelper = httpClientHelper;
         _registrationService = registrationService;
+        _logNotificationService = logNotificationService;
     }
 
     [HttpPost]
     public async Task<IActionResult> LogData([FromBody] LogDataModel logData)
     {
         _logger.LogInformation($"Received log data: {logData.Name}");
-
-        var currentServiceUrl = _registrationService.GetNextServiceRoundRobin();
-        _logger.LogInformation("Forwarding log data to service: {Service}", currentServiceUrl);
-        try
-        {
-            var response = await _httpClientHelper.PostAsync<string>($"{currentServiceUrl}/api/log", logData);
-            _logger.LogInformation("Log data forwarded to {Service} successfully", currentServiceUrl);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Failed to forward log data to service: {Service}", currentServiceUrl);
-        }
-
-
+        Console.WriteLine($"Received log data: {logData.Name}");
+        // Send SignalR notification to all connected clients
+        await _logNotificationService.NotifyLogAdded(logData);
         return Ok(new { Status = "Logged" });
     }
 

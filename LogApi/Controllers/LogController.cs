@@ -20,14 +20,4 @@ public class LogController : ControllerBase
     {
         return _logService.GetLogs();
     }
-
-    [HttpPost]
-    public IActionResult Post([FromBody] LogDataModel log)
-    {
-        if (log == null)
-            return BadRequest("Log data is required");
-
-        _logService.AddLog(log);
-        return Ok();
-    }
 }

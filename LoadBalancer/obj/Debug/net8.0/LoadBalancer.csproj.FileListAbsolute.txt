@@ -63,3 +63,9 @@ C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\
 C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
 C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
 C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\obj\Debug\net8.0\LoadBalancer.sourcelink.json
+C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\MessagePack.dll
+C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\MessagePack.Annotations.dll
+C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.StackExchangeRedis.dll
+C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
+C:\Users\diego\OneDrive\Documents\Projects_Masters\AYGO\Workshop 2\LoadBalancer\bin\Debug\net8.0\LoadBalancer.staticwebassets.runtime.json

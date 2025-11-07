@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "nEs8ZkJg3fA=",
+  "dgSpecHash": "4eFJjZ7utYk=",
   "success": true,
   "projectFilePath": "C:\\Users\\diego\\OneDrive\\Documents\\Projects_Masters\\AYGO\\Workshop 2\\LogApi\\LogApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\diego\\.nuget\\packages\\messagepack\\2.5.108\\messagepack.2.5.108.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\messagepack.annotations\\2.5.108\\messagepack.annotations.2.5.108.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\8.0.10\\microsoft.aspnetcore.http.connections.client.8.0.10.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.10\\microsoft.aspnetcore.openapi.8.0.10.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.signalr.client\\8.0.10\\microsoft.aspnetcore.signalr.client.8.0.10.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.signalr.client.core\\8.0.10\\microsoft.aspnetcore.signalr.client.core.8.0.10.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.signalr.stackexchangeredis\\8.0.10\\microsoft.aspnetcore.signalr.stackexchangeredis.8.0.10.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.net.stringtools\\17.4.0\\microsoft.net.stringtools.17.4.0.nupkg.sha512",

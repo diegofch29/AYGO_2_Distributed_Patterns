@@ -1,6 +1,7 @@
 using LogApi.Stores;
 using LogApi.Hubs;
 using LogApi.Services;
+using Microsoft.AspNetCore.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,12 +46,18 @@ else
 builder.Services.AddSingleton<KeyValueStore>();
 builder.Services.AddSingleton<LogApi.Services.ILogService, LogApi.Services.LogService>();
 
-// Register HTTP client for service registration
-builder.Services.AddHttpClient<IServiceRegistrationService, ServiceRegistrationService>();
+// Register HTTP client for service registration with timeout configuration
+builder.Services.AddHttpClient<IServiceRegistrationService, ServiceRegistrationService>(client =>
+{
+    client.Timeout = TimeSpan.FromSeconds(10); // 10 second timeout
+});
 
 // Register service registration services
 builder.Services.AddSingleton<IServiceRegistrationService, ServiceRegistrationService>();
 builder.Services.AddHostedService<ServiceRegistrationHostedService>();
+
+// Register SignalR replication service for cross-VM sync
+builder.Services.AddHostedService<SignalRReplicationService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "zKHQt7BCje0=",
+  "dgSpecHash": "Rtp/FNnM90M=",
   "success": true,
   "projectFilePath": "C:\\Users\\diego\\OneDrive\\Documents\\Projects_Masters\\AYGO\\Workshop 2\\LoadBalancer\\LoadBalancer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\diego\\.nuget\\packages\\messagepack\\2.5.108\\messagepack.2.5.108.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\messagepack.annotations\\2.5.108\\messagepack.annotations.2.5.108.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.0\\microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.signalr\\1.1.0\\microsoft.aspnetcore.signalr.1.1.0.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.aspnetcore.signalr.stackexchangeredis\\8.0.0\\microsoft.aspnetcore.signalr.stackexchangeredis.8.0.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.extensions.caching.stackexchangeredis\\8.0.0\\microsoft.extensions.caching.stackexchangeredis.8.0.0.nupkg.sha512",
+    "C:\\Users\\diego\\.nuget\\packages\\microsoft.net.stringtools\\17.4.0\\microsoft.net.stringtools.17.4.0.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\diego\\.nuget\\packages\\stackexchange.redis\\2.7.33\\stackexchange.redis.2.7.33.nupkg.sha512",

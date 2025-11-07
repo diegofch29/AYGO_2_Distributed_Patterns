@@ -9,6 +9,8 @@
       "LoadBalancer/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "8.0.0",
+          "Microsoft.AspNetCore.SignalR": "1.1.0",
+          "Microsoft.AspNetCore.SignalR.StackExchangeRedis": "8.0.0",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",
           "StackExchange.Redis": "2.7.33",
           "Swashbuckle.AspNetCore": "6.5.0"
@@ -17,12 +19,45 @@
           "LoadBalancer.dll": {}
         }
       },
+      "MessagePack/2.5.108": {
+        "dependencies": {
+          "MessagePack.Annotations": "2.5.108",
+          "Microsoft.NET.StringTools": "17.4.0"
+        },
+        "runtime": {
+          "lib/net6.0/MessagePack.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.108.51978"
+          }
+        }
+      },
+      "MessagePack.Annotations/2.5.108": {
+        "runtime": {
+          "lib/netstandard2.0/MessagePack.Annotations.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.108.51978"
+          }
+        }
+      },
       "Microsoft.AspNetCore.OpenApi/8.0.0": {
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53112"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.SignalR/1.1.0": {},
+      "Microsoft.AspNetCore.SignalR.StackExchangeRedis/8.0.0": {
+        "dependencies": {
+          "MessagePack": "2.5.108",
+          "StackExchange.Redis": "2.7.33"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.SignalR.StackExchangeRedis.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.53112"
           }
@@ -37,6 +72,14 @@
           "lib/net8.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.53112"
+          }
+        }
+      },
+      "Microsoft.NET.StringTools/17.4.0": {
+        "runtime": {
+          "lib/net7.0/Microsoft.NET.StringTools.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "17.4.0.51802"
           }
         }
       },
@@ -113,12 +156,40 @@
       "serviceable": false,
       "sha512": ""
     },
+    "MessagePack/2.5.108": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kcVRbdWP3xNWLZmmpm4DFO+kuXf6mUR2mHZ27WoZIEFIv9hazuUd80injXhNrZnlq/FklAdCsLOil5M76I4Ndg==",
+      "path": "messagepack/2.5.108",
+      "hashPath": "messagepack.2.5.108.nupkg.sha512"
+    },
+    "MessagePack.Annotations/2.5.108": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-28aNCvfJClgwaKr26gf2S6LT+C1PNyPxiG+ihYpy8uCJsRLJEDoCt2I0Uk5hqOPQ8P8hI0ESy520oMkZkPmsOQ==",
+      "path": "messagepack.annotations/2.5.108",
+      "hashPath": "messagepack.annotations.2.5.108.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.OpenApi/8.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-T4mwMvPSOYAp+KeQ4xO8H2rxpiOMJ9W/7yBBkUTMp96AHtGlPN4s7hbax2tM61LxTY775JKL4fiv5grn41EHXw==",
       "path": "microsoft.aspnetcore.openapi/8.0.0",
       "hashPath": "microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V5X5XkeAHaFyyBOGPrddVeqTNo6zRPJNS5PRhlzEyBXiNG9AtqUbMyWFdZahQyMiIWJau550z59A4kdC9g5I9A==",
+      "path": "microsoft.aspnetcore.signalr/1.1.0",
+      "hashPath": "microsoft.aspnetcore.signalr.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.StackExchangeRedis/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OgazxPEWP1gR+7sfxJAkZTVbmpP6QW/3AOo4ITmiyWwnWk3zQxvB6LEjIgLy2gWBQ4qYP6BYFrg6/ff01jq+cw==",
+      "path": "microsoft.aspnetcore.signalr.stackexchangeredis/8.0.0",
+      "hashPath": "microsoft.aspnetcore.signalr.stackexchangeredis.8.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "type": "package",
@@ -133,6 +204,13 @@
       "sha512": "sha512-kyjUU0VujU4WcQoS/3EkMgTWIF4Trqfp2hDFSd21jnb0otyNXvDwx8dtMi37IwGt95imz34wEuTnFzSrPGb1tA==",
       "path": "microsoft.extensions.caching.stackexchangeredis/8.0.0",
       "hashPath": "microsoft.extensions.caching.stackexchangeredis.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.NET.StringTools/17.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-06T6Hqfs3JDIaBvJaBRFFMIdU7oE0OMab5Xl8LKQjWPxBQr3BgVFKMQPTC+GsSEuYREWmK6g5eOd7Xqd9p1YCA==",
+      "path": "microsoft.net.stringtools/17.4.0",
+      "hashPath": "microsoft.net.stringtools.17.4.0.nupkg.sha512"
     },
     "Microsoft.OpenApi/1.4.3": {
       "type": "package",

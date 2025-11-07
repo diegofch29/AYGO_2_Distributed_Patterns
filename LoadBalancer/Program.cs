@@ -1,6 +1,8 @@
 
 using LoadBalancer.Helper;
 using LoadBalancer.Services;
+using LoadBalancer.Hubs;
+using LoadBalancer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,15 +41,55 @@ builder.Services.AddStackExchangeRedisCache(options =>
     };
 });
 
+var signalRBuilder = builder.Services.AddSignalR();
+
+var redisConnectionString = builder.Configuration.GetConnectionString("Redis");
+
+if (!string.IsNullOrEmpty(redisConnectionString) && redisConnectionString != "0.0.0.0")
+{
+    try
+    {
+        signalRBuilder.AddStackExchangeRedis(redisConnectionString, options =>
+        {
+            options.Configuration.ChannelPrefix = StackExchange.Redis.RedisChannel.Literal("LogApi");
+            options.Configuration.AbortOnConnectFail = false;
+            options.Configuration.ConnectTimeout = 5000;
+            options.Configuration.SyncTimeout = 5000;
+        });
+
+        // Test Redis connection
+        var redisConfig = StackExchange.Redis.ConfigurationOptions.Parse(redisConnectionString);
+        redisConfig.AbortOnConnectFail = false;
+        redisConfig.ConnectTimeout = 5000;
+        using var connection = StackExchange.Redis.ConnectionMultiplexer.Connect(redisConfig);
+
+        Console.WriteLine($"Successfully connected to Redis at {redisConnectionString}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Warning: Failed to connect to Redis at {redisConnectionString}. Running in single-instance mode. Error: {ex.Message}");
+    }
+}
+else
+{
+    Console.WriteLine("Redis connection string not configured or set to 0.0.0.0. Running SignalR in single-instance mode.");
+}
+
+builder.Services.AddHostedService<SignalRReplicationService>();
+
+
 // Register HttpClient and HttpClientHelper
 builder.Services.AddHttpClient<IHttpClientHelper, HttpClientHelper>();
 
 // Register custom services
 builder.Services.AddScoped<IRedisService, RedisService>();
 builder.Services.AddScoped<IRegistrationService, RegistrationService>();
+builder.Services.AddScoped<ILogNotificationService, LogNotificationService>();
 builder.Services.AddHostedService<RedisHealthService>();
 
 var app = builder.Build();
+
+app.MapHub<ReplicationHub>("/replicate");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

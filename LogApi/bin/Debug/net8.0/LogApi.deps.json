@@ -9,6 +9,7 @@
       "LogApi/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "8.0.10",
+          "Microsoft.AspNetCore.SignalR.Client": "8.0.10",
           "Microsoft.AspNetCore.SignalR.StackExchangeRedis": "8.0.10",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -36,12 +37,40 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Http.Connections.Client/8.0.10": {
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Http.Connections.Client.dll": {
+            "assemblyVersion": "8.0.10.0",
+            "fileVersion": "8.0.1024.46804"
+          }
+        }
+      },
       "Microsoft.AspNetCore.OpenApi/8.0.10": {
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "assemblyVersion": "8.0.10.0",
+            "fileVersion": "8.0.1024.46804"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Client/8.0.10": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Connections.Client": "8.0.10",
+          "Microsoft.AspNetCore.SignalR.Client.Core": "8.0.10"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.SignalR.Client.dll": {
+            "assemblyVersion": "8.0.10.0",
+            "fileVersion": "8.0.1024.46804"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Client.Core/8.0.10": {
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.SignalR.Client.Core.dll": {
             "assemblyVersion": "8.0.10.0",
             "fileVersion": "8.0.1024.46804"
           }
@@ -155,12 +184,33 @@
       "path": "messagepack.annotations/2.5.108",
       "hashPath": "messagepack.annotations.2.5.108.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Http.Connections.Client/8.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iyeFk9Vdk8cpovPkIQe5+pRDQQ4XUhZO4MALrRrbIRe8r/qPJ3m8j2YWYuKcDNkk1iEiPKZI5Xft8gymEuYpRQ==",
+      "path": "microsoft.aspnetcore.http.connections.client/8.0.10",
+      "hashPath": "microsoft.aspnetcore.http.connections.client.8.0.10.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.OpenApi/8.0.10": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-kzYiW/IbSN0xittjplA8eN1wrNcRi3DMalYRrEuF2xyf2Y5u7cGCfgN1oNZ+g3aBQzMKTQwYsY1PeNmC+P0WnA==",
       "path": "microsoft.aspnetcore.openapi/8.0.10",
       "hashPath": "microsoft.aspnetcore.openapi.8.0.10.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Client/8.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-X3byEFszbvD2IOiVeK37GIkBvQ0TXe5EZU7chbT7/MNqEeAh5ZVJeQ3CWdd33lCgp2hfnLf6uI65G/zp/Jm1Hw==",
+      "path": "microsoft.aspnetcore.signalr.client/8.0.10",
+      "hashPath": "microsoft.aspnetcore.signalr.client.8.0.10.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Client.Core/8.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JvteyIThzPPSxzGM5XDn8eSYAGaH4sr1tztXhH5r080VEK8AhT7OnTIX/B3xBOKA6nwf1J6Ic9/GygekduWRUw==",
+      "path": "microsoft.aspnetcore.signalr.client.core/8.0.10",
+      "hashPath": "microsoft.aspnetcore.signalr.client.core.8.0.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.SignalR.StackExchangeRedis/8.0.10": {
       "type": "package",
