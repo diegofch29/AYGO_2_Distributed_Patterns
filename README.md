@@ -11,7 +11,7 @@ The system consists of the following components:
 - **Log API Instances**: Multiple backend services for log processing
 - **Frontend Client**: React application for log interaction
 
-![Architecture Diagram](./images/architecture-diagram.png)
+![Architecture Diagram](./images/Architecture.png)
 
 ## Prerequisites
 
@@ -37,14 +37,14 @@ Create the following EC2 instances on AWS:
 2. Navigate to EC2 Dashboard
 3. Click "Launch Instance"
 
-![AWS EC2 Dashboard](./images/step1-ec2-dashboard.png)
+![AWS EC2 Dashboard](./images/Dashboard.png)
 
 4. Configure each instance with the following specifications:
    - **AMI**: Amazon Linux 2 or Ubuntu 20.04 LTS
    - **Instance Type**: t2.micro (or larger based on requirements)
    - **Security Group**: Configure ports as specified below
 
-![Instance Configuration](./images/step1-instance-config.png)
+![Instance Configuration](./images/instance_creation.png)
 
 #### 1.2 Security Group Configuration
 
@@ -76,8 +76,6 @@ After launching, record the following for each instance:
 - Public IP Address
 - Private IP Address
 
-![Instance Details](./images/step1-instance-details.png)
-
 ### Step 2: Setup Redis Instance
 
 #### 2.1 Connect to Redis Instance
@@ -88,8 +86,6 @@ Connect to your Redis EC2 instance via SSH:
 ssh -i your-key.pem ec2-user@<redis-public-ip>
 ```
 
-![SSH Connection](./images/step2-ssh-connection.png)
-
 #### 2.2 Install Docker
 
 ```bash
@@ -99,7 +95,7 @@ sudo service docker start
 sudo usermod -a -G docker ec2-user
 ```
 
-![Docker Installation](./images/step2-docker-install.png)
+![Docker Installation](./images/Docker_install.png)
 
 #### 2.3 Pull and Run Redis
 
@@ -108,7 +104,7 @@ docker pull redis:latest
 docker run -d --name redis -p 6379:6379 redis:latest
 ```
 
-![Redis Container](./images/step2-redis-container.png)
+![Redis Container](./images/Redis.png)
 
 #### 2.4 Verify Redis Installation
 
@@ -116,8 +112,6 @@ docker run -d --name redis -p 6379:6379 redis:latest
 docker ps
 docker logs redis
 ```
-
-![Redis Verification](./images/step2-redis-verification.png)
 
 ### Step 3: Setup Frontend + Load Balancer Instance
 
@@ -136,8 +130,6 @@ sudo service docker start
 sudo usermod -a -G docker ec2-user
 ```
 
-![Frontend Docker Installation](./images/step3-docker-install.png)
-
 #### 3.3 Run Frontend Application
 
 Replace `<load_balancer_url_ip>` with the current instance's public IP:
@@ -149,7 +141,7 @@ docker run -d -p 80:5173 \
   diegofchb29/log_client_app_aygo_2
 ```
 
-![Frontend Container](./images/step3-frontend-container.png)
+![Frontend Container](./images/Client_App.png)
 
 #### 3.4 Run Load Balancer
 
@@ -163,7 +155,7 @@ docker run -d -p 8080:8080 --name loadbalancer \
   diegofchb29/load_balancer_aygo_2
 ```
 
-![Load Balancer Container](./images/step3-loadbalancer-container.png)
+![Load Balancer Container](./images/Load_Balancer.png)
 
 #### 3.5 Verify Deployment
 
@@ -172,8 +164,6 @@ docker ps
 curl http://localhost:80
 curl http://localhost:8080/health
 ```
-
-![Frontend and Load Balancer Verification](./images/step3-verification.png)
 
 ### Step 4: Setup Log API Instances
 
@@ -193,8 +183,6 @@ sudo yum install docker -y
 sudo service docker start
 sudo usermod -a -G docker ec2-user
 ```
-
-![Log API Docker Installation](./images/step4-docker-install.png)
 
 #### 4.3 Run Log API Application
 
@@ -216,7 +204,7 @@ docker run -d --name logapi-app -p 8080:8080 \
   diegofchb29/log_api_aygo_2
 ```
 
-![Log API Container](./images/step4-logapi-container.png)
+![Log API Container](./images/Api.png)
 
 #### 4.4 Verify Log API Instance
 
@@ -225,8 +213,6 @@ docker ps
 docker logs logapi-app
 curl http://localhost:8080/health
 ```
-
-![Log API Verification](./images/step4-verification.png)
 
 ### Step 5: System Verification and Testing
 
@@ -238,8 +224,6 @@ Verify all Log API instances are registered with the load balancer:
 curl http://<load_balancer_public_ip>:8080/api/registration/services
 ```
 
-![Service Registration](./images/step5-service-registration.png)
-
 #### 5.2 Test Load Balancing
 
 Make multiple requests to see load balancing in action:
@@ -250,8 +234,6 @@ curl http://<load_balancer_public_ip>:8080/api/log
 curl http://<load_balancer_public_ip>:8080/api/log
 ```
 
-![Load Balancing Test](./images/step5-load-balancing.png)
-
 #### 5.3 Access Frontend Application
 
 Open your browser and navigate to:
@@ -260,7 +242,7 @@ Open your browser and navigate to:
 http://<frontend_public_ip>
 ```
 
-![Frontend Application](./images/step5-frontend-app.png)
+![Frontend Application](./images/Test_Client_1.png)
 
 #### 5.4 Test Log Creation and Retrieval
 
@@ -268,47 +250,7 @@ http://<frontend_public_ip>
 2. Verify the log appears in the list
 3. Check that logs are distributed across instances
 
-![Log Testing](./images/step5-log-testing.png)
-
-### Step 6: Monitoring and Maintenance
-
-#### 6.1 Monitor Container Health
-
-On each instance, regularly check container status:
-
-```bash
-docker ps
-docker stats
-```
-
-![Container Monitoring](./images/step6-monitoring.png)
-
-#### 6.2 View Application Logs
-
-```bash
-# Frontend logs
-docker logs <frontend-container-id>
-
-# Load Balancer logs
-docker logs loadbalancer
-
-# Log API logs
-docker logs logapi-app
-```
-
-![Application Logs](./images/step6-app-logs.png)
-
-#### 6.3 Redis Monitoring
-
-Connect to Redis and check registered services:
-
-```bash
-docker exec -it redis redis-cli
-KEYS *
-GET <service-key>
-```
-
-![Redis Monitoring](./images/step6-redis-monitoring.png)
+![Log Testing](./images/Test_Client_2.png)
 
 ## Troubleshooting
 
@@ -334,8 +276,6 @@ GET <service-key>
 2. Check port 8080 is open in security group
 3. Verify Redis connection
 
-![Troubleshooting Load Balancer](./images/troubleshooting-load-balancer.png)
-
 #### Issue 3: Frontend Not Loading
 
 **Symptoms**: Browser shows connection error
@@ -344,8 +284,6 @@ GET <service-key>
 1. Verify frontend container is running on port 80
 2. Check security group allows HTTP traffic
 3. Verify environment variables are correct
-
-![Troubleshooting Frontend](./images/troubleshooting-frontend.png)
 
 ### Useful Commands
 
@@ -366,46 +304,6 @@ docker stats
 docker exec -it <container-name> /bin/bash
 ```
 
-## Architecture Details
-
-### Component Communication
-
-1. **Frontend** → **Load Balancer**: HTTP requests for log operations
-2. **Load Balancer** → **Log API Instances**: Distributes requests using round-robin
-3. **All Components** → **Redis**: Service registration and caching
-4. **Log API Instances** → **Load Balancer**: Heartbeat for health checking
-
-![Component Communication](./images/component-communication.png)
-
-### Data Flow
-
-1. User creates log via frontend
-2. Frontend sends request to load balancer
-3. Load balancer selects available Log API instance
-4. Log API processes request and stores in Redis
-5. Response flows back through the chain
-6. Real-time updates propagated to other instances
-
-![Data Flow Diagram](./images/data-flow.png)
-
-## Performance Considerations
-
-- **Scaling**: Add more Log API instances by repeating Step 4
-- **Redis Performance**: Consider Redis clustering for high availability
-- **Load Balancer**: Monitor for bottlenecks and consider multiple load balancer instances
-- **Network**: Optimize security group rules for better performance
-
-![Performance Metrics](./images/performance-metrics.png)
-
-## Security Best Practices
-
-1. **Restrict Security Groups**: Only allow necessary ports and sources
-2. **Use Private IPs**: Internal communication should use private IPs
-3. **Regular Updates**: Keep Docker images and OS updated
-4. **Monitoring**: Implement comprehensive logging and monitoring
-
-![Security Configuration](./images/security-configuration.png)
-
 ## Cleanup
 
 To remove all resources:
@@ -425,17 +323,3 @@ docker rm $(docker ps -aq)
 # Remove all images
 docker rmi $(docker images -q)
 ```
-
-![Cleanup Process](./images/cleanup-process.png)
-
----
-
-## Support
-
-For issues and questions:
-
-- Check the troubleshooting section above
-- Review application logs
-- Verify network connectivity between instances
-
-![Support Resources](./images/support-resources.png)
